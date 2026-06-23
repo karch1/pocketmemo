@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pocket-memo-v1';
+const CACHE_NAME = 'pocket-memo-v2';
 // 캐싱할 파일 목록 (파비콘 제외, 상대 경로 기준)
 const FILES_TO_CACHE = [
   './',

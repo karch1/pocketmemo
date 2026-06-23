@@ -32,18 +32,20 @@ function addMemo() {
     card.className = 'memo-card';
     card.onclick = function() { toggleMemo(this); };
 
-    // 데이터 검색을 용이하게 하기 위해 data-* 속성에 텍스트 저장
+    // 데이터 검색용 속성 저장
     card.setAttribute('data-title', titleInput.value.toLowerCase());
     card.setAttribute('data-content', contentInput.value.toLowerCase());
 
     card.innerHTML = `
         <div class="memo-header">
-            <p class="memo-title">${titleInput.value}</p>
+            <div class="title-area">
+                <p class="memo-title">${titleInput.value}</p>
+                <span class="memo-date">${currentDateTime}</span>
+            </div>
             <span class="arrow-icon">▼</span>
         </div>
         <div class="memo-content">
             ${contentInput.value.replace(/\n/g, '<br>')}
-            <div class="memo-date">${currentDateTime}</div>
         </div>
     `;
 
@@ -53,7 +55,6 @@ function addMemo() {
     titleInput.value = '';
     contentInput.value = '';
     
-    // 메모 추가 후 검색창이 채워져 있다면 필터링 다시 적용
     filterMemos();
 }
 

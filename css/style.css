@@ -109,6 +109,18 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 20px;
+    width: 100%;
+}
+
+/* 💡 제목과 날짜를 묶어주는 영역 추가 */
+.title-area {
+    display: flex;
+    align-items: baseline; /* 제목 밑선에 날짜 맞추기 */
+    gap: 10px; /* 제목과 날짜 사이 간격 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
 }
 
 .memo-title {
@@ -117,16 +129,25 @@ header {
     margin: 0;
 }
 
+/* 💡 날짜 스타일 수정 (제목 옆에 연하게 붙도록 함) */
+.memo-date {
+    font-size: 11px;
+    color: var(--date-color);
+    font-weight: normal;
+    white-space: nowrap;
+}
+
 .arrow-icon {
     font-size: 12px;
     transition: transform 0.3s;
+    margin-left: 10px;
 }
 
 .memo-card.expanded .arrow-icon {
     transform: rotate(180deg); 
 }
 
-/* 펼쳐지는 본문 내용 */
+/* 펼쳐지는 본문 내용 (날짜가 빠져서 깔끔해짐) */
 .memo-content {
     margin-top: 15px;
     font-size: 14px;

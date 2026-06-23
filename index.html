@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Pocket Memo</title>
-    
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -19,18 +18,12 @@
         <button onclick="addMemo()">쪽지 남기기</button>
     </div>
 
-    <div class="memo-list" id="memoList">
-        <div class="memo-card" onclick="toggleMemo(this)">
-            <div class="memo-header">
-                <p class="memo-title">📌 첫 번째 쪽지 테스트 (클릭해보세요)</p>
-                <span class="arrow-icon">▼</span>
-            </div>
-            <div class="memo-content">
-                누르면 이렇게 부드럽게 아래로 펼쳐지면서 상세 내용이 나오게 됩니다. 디자인을 확인해 보시고 원하는 방향으로 언제든 수정해 드릴게요!
-            </div>
-        </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" oninput="filterMemos()" placeholder="🔍 제목 또는 내용으로 검색...">
     </div>
 
-    <script src="./js/script.js"></script>
+    <div class="memo-list" id="memoList"></div>
+
+    <script src="/js/script.js"></script>
 </body>
 </html>

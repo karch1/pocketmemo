@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Nanum Pen Script', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 20px; 
+    font-size: 26px; /*  시원하게 기본 크기 상향 */
     letter-spacing: 0.5px;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -41,6 +41,7 @@ header {
     box-sizing: border-box;
 }
 
+/*  메모 입력창 폰트 및 크기 강제 적용 */
 .memo-form input, .memo-form textarea {
     width: 100%;
     border: 1px solid #e1e4e8;
@@ -48,8 +49,15 @@ header {
     padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-family: 'Nanum Pen Script', sans-serif; /*  폰트 강제 적용 */
+    font-size: 22px; /*  크기 확대 */
     resize: none;
+}
+
+/*  '제목을 입력하세요' 등 힌트 텍스트 폰트 적용 */
+.memo-form input::placeholder, .memo-form textarea::placeholder {
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 22px;
 }
 
 .memo-form button {
@@ -59,6 +67,8 @@ header {
     border: none;
     padding: 12px;
     border-radius: 6px;
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -70,14 +80,20 @@ header {
     margin-bottom: 25px;
 }
 
+/*  검색창 폰트 및 크기 강제 적용 */
 .search-bar input {
     width: 100%;
     border: 1px solid #e1e4e8;
-    border-radius: 20px; /* 둥근 검색창 느낌 */
+    border-radius: 20px;
     padding: 12px 20px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-family: 'Nanum Pen Script', sans-serif; /*  폰트 강제 적용 */
+    font-size: 22px; /*  크기 확대 */
     box-shadow: var(--shadow);
+}
+.search-bar input::placeholder {
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 22px;
 }
 
 /* 메모 리스트 (쪽지 형태) */
@@ -99,12 +115,12 @@ header {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     overflow: hidden;
-    max-height: 50px; /* 닫혀있을 때 제목만 보일 높이 */
+    max-height: 55px; /*  폰트가 커져서 닫힌 높이 살짝 보정 */
 }
 
 /* 클릭되어 펼쳐진 상태 */
 .memo-card.expanded {
-    max-height: 500px; /* 펼쳐졌을 때 충분한 높이 */
+    max-height: 800px; /*  폰트가 커져서 본문이 길어질 수 있으므로 최대 높이 확장 */
     border-left-color: #2ecc71; 
 }
 
@@ -112,15 +128,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 20px;
+    height: 25px; /*  살짝 확장 */
     width: 100%;
 }
 
-/* 💡 제목과 날짜를 묶어주는 영역 추가 */
 .title-area {
     display: flex;
-    align-items: baseline; /* 제목 밑선에 날짜 맞추기 */
-    gap: 10px; /* 제목과 날짜 사이 간격 */
+    align-items: baseline;
+    gap: 10px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -129,20 +144,19 @@ header {
 
 .memo-title {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 24px; /*  리스트 제목 크기 확대 */
     margin: 0;
 }
 
-/* 💡 날짜 스타일 수정 (제목 옆에 연하게 붙도록 함) */
 .memo-date {
-    font-size: 11px;
+    font-size: 14px; /*  날짜 크기 살짝 보정 */
     color: var(--date-color);
     font-weight: normal;
     white-space: nowrap;
 }
 
 .arrow-icon {
-    font-size: 12px;
+    font-size: 14px;
     transition: transform 0.3s;
     margin-left: 10px;
 }
@@ -151,11 +165,11 @@ header {
     transform: rotate(180deg); 
 }
 
-/* 펼쳐지는 본문 내용 (날짜가 빠져서 깔끔해짐) */
+/* 펼쳐지는 본문 내용 */
 .memo-content {
     margin-top: 15px;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 22px; /*  본문 내용 크기 대폭 확대 */
+    line-height: 1.5;
     white-space: pre-wrap;
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -165,15 +179,7 @@ header {
     opacity: 1;
 }
 
-/* 날짜 스타일 추가 */
-.memo-date {
-    margin-top: 10px;
-    font-size: 11px;
-    color: var(--date-color);
-    text-align: right;
-}
-
-/* --- 로그인 레이어 및 기타 스타일 추가 --- */
+/* --- 로그인 레이어 및 기타 스타일 --- */
 
 .login-overlay {
     position: fixed;
@@ -195,8 +201,13 @@ header {
     width: 90%;
 }
 
+.login-box h2 {
+    font-size: 28px;
+    margin-top: 0;
+}
+
 .login-box p {
-    font-size: 14px;
+    font-size: 18px;
     color: #666;
     margin-bottom: 20px;
 }
@@ -210,7 +221,8 @@ header {
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 14px;
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 20px;
     transition: background 0.2s;
 }
 
@@ -226,21 +238,28 @@ header {
     width: 100%;
 }
 
+.header-flex h2 {
+    font-size: 28px;
+    margin: 0;
+}
+
 .logout-btn {
     background: transparent;
     border: 1px solid #d1d4d8;
     color: #666;
-    padding: 6px 12px;
+    padding: 4px 12px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 12px;
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 16px;
 }
 
 .logout-btn:hover {
     background: #f1f2f6;
     color: #333;
 }
-/* --- 수정 / 삭제 버튼 및 폼 스타일 추가 --- */
+
+/* --- 수정 / 삭제 버튼 및 폼 스타일 --- */
 
 .memo-actions {
     display: flex;
@@ -250,8 +269,9 @@ header {
 }
 
 .edit-btn, .delete-btn, .save-btn, .cancel-btn {
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 4px 12px;
+    font-family: 'Nanum Pen Script', sans-serif;
+    font-size: 16px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -277,7 +297,8 @@ header {
     border-radius: 4px;
     padding: 8px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-family: 'Nanum Pen Script', sans-serif; /*  수정창도 폰트 적용 */
+    font-size: 22px; /*  수정창도 크기 상향 */
 }
 .edit-actions {
     display: flex;
